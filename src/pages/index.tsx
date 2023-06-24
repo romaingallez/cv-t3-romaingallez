@@ -22,6 +22,7 @@ export default function Home() {
         >
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quam quaerat deserunt molestiae praesentium aliquam, ut eos quas magni vel vero minima, qui dolorum. Commodi placeat ipsam qui voluptas natus!</p>
         </main>
+        <p>{age}</p>
       </div>
 
       <footer className="font-questrial mx-12 mt-12 flex flex-col justify-center text-center md:flex-row">
