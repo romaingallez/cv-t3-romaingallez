@@ -1,7 +1,11 @@
 import Head from "next/head";
 import "@fontsource/questrial";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
+import { TurnstileInstance} from "@marsidev/react-turnstile";
+import { CloudFlareCaptcha } from "../components/CloudFlareCaptcha";
+
+
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -10,9 +14,22 @@ export default function Contact() {
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
   const [error, setError] = useState("");
+  const captcha = useRef<TurnstileInstance>(null);
+  const [captchaSuccess, setCaptchaSuccess] = useState(false);
+  const [token, setToken] = useState<string | null>(null)
+
+
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    console.log(captchaSuccess, token);
+
+    if (!captcha || !captchaSuccess) {
+      setError("Please complete the captcha challenge.");
+      return;
+    }
 
     // Disable the submit button and show loading state
     setIsSending(true);
@@ -24,17 +41,20 @@ export default function Contact() {
         to: "romain@romaingallez.fr", // Replace with the recipient's email address
         from: email,
         subject: "Contact Form Submission",
+        captchaToken: token, // Include the captcha token
         body: message,
         name: name,
       });
 
-      console.log(name, body, message);
+      // console.log(name, body, message);
 
       // Clear the form and show success message
       setName("");
       setEmail("");
       setMessage("");
       setIsSent(true);
+      setCaptcha(null); // clear the captcha
+
     } catch (error) {
       // Show error message
       setError("Failed to send email. Please try again later.");
@@ -111,6 +131,17 @@ export default function Contact() {
                 rows={4}
                 required
               ></textarea>
+            </div>
+            <p>NEXT_PUBLIC_TURNSTILE_SITE_KEY: {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}</p>
+
+            <div className="mb-4">
+              <CloudFlareCaptcha             
+              ref={captcha}
+              onSuccess={token => {
+                setCaptchaSuccess(true)
+                setToken(token)
+              }}
+              />
             </div>
             <div className="text-center">
               <button

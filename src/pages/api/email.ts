@@ -7,8 +7,12 @@
 // The endpoint should return a 200 status code if the email was sent successfully, and a 500 status code if there was an error.
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ReactEmailTemplate } from "../../../components/ReactEmailTemplate";
+import { ReactEmailTemplate } from "src/components/ReactEmailTemplate";
 import { Resend } from "resend";
+
+const secret = '1x0000000000000000000000000000000AA';
+
+
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -17,25 +21,47 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).json({ error: 'Method Not Allowed' });
     return;
   }
+  
 
-  const { to, from, name, subject, body } = req.body;
+  const { to, from, name, subject, body, captchaToken } = req.body;
 
   // Validate the required parameters
-  if (!to || !from || !subject || !body) {
+  if (!to || !from || !subject || !body || !captchaToken) {
     res.status(400).json({ error: 'Missing parameters' });
     return;
   }
 
+  const form = new URLSearchParams()
+  form.append('secret', process.env.TURNSTILE_SECRET_KEY)
+  form.append('response', captchaToken)
+  form.append('remoteip', req.headers['x-forwarded-for'] as string)
+
+  const result = await fetch(
+    'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+    { method: 'POST', body: form }
+  )
+  const json = await result.json()
+  if (!json.success) {
+    res.status(400).json({ error: 'Captcha token failed' });
+    return;
+  }
+  console.log("success", json.success)
+  // res.status(result.status).json(json)
+
+
+
   try {
 
-    const data = await resend.emails.send({
-      from: "Romain GALLEZ <contact@romaingallez.fr>",
-      to: ["romain.gallez@gmail.com"],
-      subject: subject,
-      react : ReactEmailTemplate({ name: name, to: to, subject: subject, body: body }),
-    //   react: EmailTemplate({ firstName: "Romain" }),
+    console.log("req.body", req.body);
 
-    });
+    // const data = await resend.emails.send({
+    //   from: "Romain GALLEZ <contact@romaingallez.fr>",
+    //   to: ["romain.gallez@gmail.com"],
+    //   subject: subject,
+    //   react : ReactEmailTemplate({ name: name, to: to, subject: subject, body: body }),
+    // //   react: EmailTemplate({ firstName: "Romain" }),
+
+    // });
     res.status(200).json(data);
   } catch (error) {
     res.status(400).json(error);
