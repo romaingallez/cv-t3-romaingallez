@@ -21,6 +21,8 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).json({ error: 'Method Not Allowed' });
     return;
   }
+
+  console.log("req.body", req.body)
   
 
   const { to, from, name, subject, body, captchaToken } = req.body as {
@@ -40,7 +42,7 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const form = new URLSearchParams();
-  form.append('secret', process.env.TURNSTILE_SITE_KEY ?? "");
+  form.append('secret', process.env.TURNSTILE_SECRET_KEY ?? "");
   form.append('response', captchaToken);
   form.append('remoteip', req.headers['x-forwarded-for'] as string); // Type assertion added
   const result = await fetch(
@@ -59,18 +61,20 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(400).json({ error: 'Captcha token failed' });
     return;
   }
-  
+
+
   
   try {
 
-    console.log("req.body", req.body);
+    // console.log("req.body", req.body);
 
     const data = await resend.emails.send({
       from: "Romain GALLEZ <contact@romaingallez.fr>",
       to: ["romain.gallez@gmail.com"],
       subject: subject,
-      react: ReactEmailTemplate({ name: name, subject: subject, body: body }),
+      react: ReactEmailTemplate({ name: name, from: from, subject: subject, body: body }),
     });
+    
     res.status(200).json(data);
   } catch (error) {
     res.status(400).json(error);

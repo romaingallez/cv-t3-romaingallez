@@ -151,7 +151,10 @@ export default function Contact() {
             <div className="mb-4">
               <CloudFlareCaptcha
                 ref={captcha}
-                onSuccess={() => setCaptchaSuccess(true)}              
+                onSuccess={(token: string) => {
+                  setToken(token);     
+                  setCaptchaSuccess(true)
+                }}              
               />
             </div>
             <div className="text-center">

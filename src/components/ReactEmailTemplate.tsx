@@ -4,8 +4,10 @@ import { Tailwind } from '@react-email/tailwind';
 
 interface ReactEmailTemplateProps {
   name: string;
+  from: string;
   subject: string;
   body: string;
+
 }
 
 export function ReactEmailTemplate(props: ReactEmailTemplateProps) {
@@ -22,7 +24,7 @@ export function ReactEmailTemplate(props: ReactEmailTemplateProps) {
       }}
     >
       <div className="bg-gray-100">
-        <p>Message de :  {props.name},</p>
+        <p>Message de :  {props.name} avec l'email {props.from},</p>
         <p>Sujet : {props.subject}</p>
         <p>Contenu du message :</p>
         <p>{props.body}</p>
