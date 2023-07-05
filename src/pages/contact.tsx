@@ -2,9 +2,10 @@ import Head from "next/head";
 import "@fontsource/questrial";
 import { useState, useRef } from "react";
 import axios from "axios";
-import { TurnstileInstance} from "@marsidev/react-turnstile";
-import { CloudFlareCaptcha } from "../components/CloudFlareCaptcha";
-
+import { Turnstile } from '@marsidev/react-turnstile'
+import type { TurnstileInstance } from '@marsidev/react-turnstile'
+// import { CloudFlareCaptcha } from "../components/CloudFlareCaptcha";
+// import CloudFlareCaptcha from "../components/CloudFlareCaptcha";
 
 
 export default function Contact() {
@@ -14,6 +15,7 @@ export default function Contact() {
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
   const [error, setError] = useState("");
+  // const setCaptcha = useState<TurnstileInstance | null>(null);
   const captcha = useRef<TurnstileInstance>(null);
   const [captchaSuccess, setCaptchaSuccess] = useState(false);
   const [token, setToken] = useState<string | null>(null)
@@ -53,7 +55,7 @@ export default function Contact() {
       setEmail("");
       setMessage("");
       setIsSent(true);
-      setCaptcha(null); // clear the captcha
+      // setCaptcha(null); // clear the captcha
 
     } catch (error) {
       // Show error message
@@ -77,7 +79,7 @@ export default function Contact() {
       >
         <div className="flex w-full flex-col p-4">
           <p>
-            Pour me joindre et obtenir plus d'informations, veuillez utiliser
+            Pour me joindre et obtenir plus d&apos;informations, veuillez utiliser
             le formulaire ci-dessous.
           </p>
           <form
@@ -132,10 +134,10 @@ export default function Contact() {
                 required
               ></textarea>
             </div>
-            <p>NEXT_PUBLIC_TURNSTILE_SITE_KEY: {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}</p>
 
             <div className="mb-4">
-              <CloudFlareCaptcha             
+              <Turnstile      
+              siteKey={process.env.TURNSTILE_SITE_KEY ?? ""}
               ref={captcha}
               onSuccess={token => {
                 setCaptchaSuccess(true)
