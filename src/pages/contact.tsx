@@ -92,8 +92,13 @@ export default function Contact() {
       >
         <div className="flex w-full flex-col p-4">
           <p>
-            Pour me joindre et obtenir plus d&apos;informations, veuillez utiliser
-            le formulaire ci-dessous.
+          Salut !
+          <br />
+          Je suis ravi de savoir que vous souhaitez me contacter. N'hésitez pas à remplir le formulaire ci-dessous pour me transmettre vos coordonnées et votre message.
+          <br />
+          Je suis impatient de vous lire !
+          <br />
+          Romain
           </p>
           <form
             className="mx-auto w-full max-w-md p-5"
