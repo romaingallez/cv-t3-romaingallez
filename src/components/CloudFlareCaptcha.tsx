@@ -25,23 +25,24 @@
 // CloudFlareCaptcha.displayName = "CloudFlareCaptcha";
 
 
-import { Turnstile } from '@marsidev/react-turnstile'
-import type { TurnstileInstance } from '@marsidev/react-turnstile'
-// import { forwardRef, useState } from "react";
-import { useRef } from "react";
+import { Turnstile, TurnstileProps } from '@marsidev/react-turnstile';
+import type { TurnstileInstance } from '@marsidev/react-turnstile';
+import { forwardRef } from "react";
 
-export default function CloudFlareCaptcha() {
+type CloudFlareCaptchaProps = Omit<TurnstileProps, 'siteKey'>;
 
-  const ref = useRef<TurnstileInstance>(null)
+const CloudFlareCaptcha = forwardRef<TurnstileInstance, CloudFlareCaptchaProps>((props, ref) => {
+  
+  // Give your component a display name for debugging purposes
+  CloudFlareCaptcha.displayName = 'CloudFlareCaptcha';
 
   return (
-  
-  <>
-  <Turnstile 
-    ref={ref} 
-    siteKey={process.env.TURNSTILE_SITE_KEY ?? ""} 
-  />
-  </>
-  )
+    <Turnstile 
+      {...props}
+      ref={ref} 
+      siteKey={process.env.TURNSTILE_SITE_KEY ?? ""} 
+    />
+  );
+});
 
-}
+export default CloudFlareCaptcha;

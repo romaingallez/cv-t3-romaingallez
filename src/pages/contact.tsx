@@ -1,69 +1,82 @@
-import Head from "next/head";
-import "@fontsource/questrial";
-import { useState, useRef } from "react";
-import axios from "axios";
-import { Turnstile } from '@marsidev/react-turnstile'
-import type { TurnstileInstance } from '@marsidev/react-turnstile'
-// import { CloudFlareCaptcha } from "../components/CloudFlareCaptcha";
-// import CloudFlareCaptcha from "../components/CloudFlareCaptcha";
-
+import Head from 'next/head';
+import { useState, useRef, ChangeEvent, FormEvent } from 'react';
+import axios from 'axios';
+import type { TurnstileInstance } from '@marsidev/react-turnstile';
+import CloudFlareCaptcha  from 'src/components/CloudFlareCaptcha';
 
 export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSending, setIsSending] = useState(false);
-  const [isSent, setIsSent] = useState(false);
-  const [error, setError] = useState("");
-  // const setCaptcha = useState<TurnstileInstance | null>(null);
-  const captcha = useRef<TurnstileInstance>(null);
-  const [captchaSuccess, setCaptchaSuccess] = useState(false);
-  const [token, setToken] = useState<string | null>(null)
+  // Form field states
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
+  
+  // Form status states
+  const [isSending, setIsSending] = useState<boolean>(false);
+  const [isSent, setIsSent] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
+  // Captcha states
+  const captcha = useRef<TurnstileInstance | null>(null);
+  const [captchaSuccess, setCaptchaSuccess] = useState<boolean>(false);
+  const [token, setToken] = useState<string | null>(null);
 
+  // Field change handlers
+  const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => setName(event.target.value);
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
+  const handleMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => setMessage(event.target.value);
 
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    console.log(captchaSuccess, token);
-
+  // Form submission handler
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+  
+    // Check captcha
     if (!captcha || !captchaSuccess) {
-      setError("Please complete the captcha challenge.");
+      setError('Please complete the captcha challenge.');
       return;
     }
+  
+    // Begin sending
+    beginSending();
+  
+    // Send the email
+    sendEmail().then(() => {
+      // Clear form on success
+      clearForm();
+    }).catch(() => {
+      // Show error on failure
+      setError('Failed to send email. Please try again later.');
+    }).finally(() => {
+      // End sending
+      endSending();
+    });
+  };
+  
 
-    // Disable the submit button and show loading state
+  const beginSending = () => {
     setIsSending(true);
-    setError("");
+    setError('');
+  };
 
-    try {
-      // Make a POST request to the email endpoint
-      await axios.post("/api/email", {
-        to: "romain@romaingallez.fr", // Replace with the recipient's email address
-        from: email,
-        subject: "Contact Form Submission",
-        captchaToken: token, // Include the captcha token
-        body: message,
-        name: name,
-      });
+  const endSending = () => {
+    setIsSending(false);
+  };
 
-      // console.log(name, body, message);
+  const sendEmail = async () => {
+    await axios.post('/api/email', {
+      to: 'romain@romaingallez.fr',
+      from: email,
+      subject: 'Contact Form Submission',
+      captchaToken: token,
+      body: message,
+      name: name,
+    });
+  };
 
-      // Clear the form and show success message
-      setName("");
-      setEmail("");
-      setMessage("");
-      setIsSent(true);
-      // setCaptcha(null); // clear the captcha
-
-    } catch (error) {
-      // Show error message
-      setError("Failed to send email. Please try again later.");
-    } finally {
-      // Re-enable the submit button
-      setIsSending(false);
-    }
+  const clearForm = () => {
+    setName('');
+    setEmail('');
+    setMessage('');
+    setIsSent(true);
   };
 
   return (
@@ -136,13 +149,9 @@ export default function Contact() {
             </div>
 
             <div className="mb-4">
-              <Turnstile      
-              siteKey={process.env.TURNSTILE_SITE_KEY ?? ""}
-              ref={captcha}
-              onSuccess={token => {
-                setCaptchaSuccess(true)
-                setToken(token)
-              }}
+              <CloudFlareCaptcha
+                ref={captcha}
+                onSuccess={() => setCaptchaSuccess(true)}              
               />
             </div>
             <div className="text-center">

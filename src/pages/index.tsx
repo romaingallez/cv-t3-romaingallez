@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
 import "@fontsource/questrial";
 import { useSearchParams } from 'next/navigation'
 
@@ -56,7 +58,7 @@ export default function Home() {
             >
               {/* Profile photo */}
               <div className="mt-8 flex flex-col items-center">
-                <img
+                <Image
                   src="/romain_1676977478655.jpeg"
                   alt="user"
                   className="mx-auto mb-2 w-48 rounded-full"
@@ -71,17 +73,17 @@ export default function Home() {
                 <div className="mb-12 px-2 text-lg font-light">
                   <h2 className="mb-4 text-xl font-semibold">Contact</h2>
                   <div className="my-3 flex items-center">
-                    <img
+                    <Image
                       src="/mail-outline.svg"
                       className="mr-4 inline w-6"
                       alt="Mail icon"
                     />
-                    <a href="/contact">Formulaire de contact</a>
+                    <Link href="/contact">Formulaire de contact</Link>
                   </div>
 
                   {showPhone && (
                     <div className="my-3 flex items-center">
-                      <img
+                      <Image
                         src="/call-outline.svg"
                         className="mr-4 inline w-6"
                         alt="Phone icon"
@@ -92,7 +94,7 @@ export default function Home() {
 
 
                   <div className="my-3 flex items-center">
-                    <img
+                    <Image
                       src="/home-outline.svg"
                       className="mr-4 inline w-6 pb-1"
                       alt="House icon"
@@ -106,7 +108,7 @@ export default function Home() {
                 <div className="mb-12 px-2 text-lg font-light">
                   <h2 className="mb-4 text-xl font-semibold">Info</h2>
                   <div className="my-3 flex items-center">
-                    <img
+                    <Image
                       src="/egg-outline.svg"
                       className="mr-4 inline w-6"
                       alt="Egg Icon"
@@ -118,7 +120,7 @@ export default function Home() {
                 <div className="mb-12 px-2 text-lg font-light">
                   <h2 className="mb-4 text-xl font-semibold">Sur internet</h2>
                   <div className="my-3 flex items-center">
-                    <img
+                    <Image
                       src="/logo-github.svg"
                       className="mr-4 inline w-6"
                       alt="GitHub Logo"
@@ -132,7 +134,7 @@ export default function Home() {
                     </a>
                   </div>
                   <div className="my-3 flex items-center">
-                    <img
+                    <Image
                       src="/logo-linkedin.svg"
                       className="mr-4 inline w-6"
                       alt="LinkedIn Logo"
