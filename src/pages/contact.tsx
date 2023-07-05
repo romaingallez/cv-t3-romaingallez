@@ -84,7 +84,7 @@ export default function Contact() {
     <>
       <MetaTags 
         title="Contacter Romain" 
-        description="This is a description of my page" 
+        description="Vous pouvez me contacter par mail ou via le formulaire de contact." 
         image="https://cv.romaingallez.fr/resume.png" 
         url="https://cv.romaingallez.fr" 
       />

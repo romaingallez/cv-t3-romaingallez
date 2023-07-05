@@ -55,7 +55,7 @@ export default function Home() {
 
       <MetaTags 
         title="CV romaingallez" 
-        description="This is a description of my page" 
+        description="Mon CV en ligne" 
         image="https://cv.romaingallez.fr/resume.png" 
         url="https://cv.romaingallez.fr" 
       />
