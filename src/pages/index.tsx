@@ -16,9 +16,26 @@ export default function Home() {
   // const age = "24";
   // const phone = "1234567890"; // Replace with your phone number
   const searchParams = useSearchParams()
+
+
+  let showEmail = false;
+  const email = searchParams.get('email')
+
+  if (email) {
+    showEmail = true;
+  } else {
+    showEmail = false;
+  }
+
   const phone = searchParams.get('phone')
   let showPhone;
   let phoneSpaced;
+
+
+
+
+
+  
   
   if (phone) {
 
@@ -33,8 +50,6 @@ export default function Home() {
     showPhone = false;
     // console.log("Phone parameter not found");
   }
-
-
 
   //read the from the query named "phone"
 
@@ -62,6 +77,8 @@ export default function Home() {
                   src="/romain_1676977478655.jpeg"
                   alt="user"
                   className="mx-auto mb-2 w-48 rounded-full"
+                  width={200}
+                  height={200}
                 />
                 <h2 className="mt-4 text-xl font-medium">Romain GALLEZ</h2>
                 <h3>
@@ -72,14 +89,35 @@ export default function Home() {
               <div>
                 <div className="mb-12 px-2 text-lg font-light">
                   <h2 className="mb-4 text-xl font-semibold">Contact</h2>
-                  <div className="my-3 flex items-center">
+                  
+
+                  {showEmail ? (
+                    <div className="my-3 flex items-center">
                     <Image
                       src="/mail-outline.svg"
                       className="mr-4 inline w-6"
                       alt="Mail icon"
+                      width={200}
+                      height={200}
+                    />
+                      <a href={`mailto:${email}`}>{email}</a>
+                    </div>
+                  ) : (
+                    <div className="my-3 flex items-center">
+                    <Image
+                      src="/mail-outline.svg"
+                      className="mr-4 inline w-6"
+                      alt="Mail icon"
+                      width={200}
+                      height={200}
                     />
                     <Link href="/contact">Formulaire de contact</Link>
                   </div>
+                  )}
+
+
+                  
+
 
                   {showPhone && (
                     <div className="my-3 flex items-center">
@@ -87,8 +125,10 @@ export default function Home() {
                         src="/call-outline.svg"
                         className="mr-4 inline w-6"
                         alt="Phone icon"
+                        width={200}
+                        height={200}
                       />
-                      <a href={`tel:{phone}`}>{phoneSpaced}</a>
+                     <a href={`tel:${phone}`}>{phoneSpaced}</a>
                     </div>
                   )}
 
@@ -98,6 +138,8 @@ export default function Home() {
                       src="/home-outline.svg"
                       className="mr-4 inline w-6 pb-1"
                       alt="House icon"
+                      width={200}
+                      height={200}
                     />
                     <div>
                       <p></p>
@@ -112,6 +154,8 @@ export default function Home() {
                       src="/egg-outline.svg"
                       className="mr-4 inline w-6"
                       alt="Egg Icon"
+                      width={200}
+                      height={200}
                     />
                     <span>{age} ans</span>
                   </div>
@@ -124,6 +168,8 @@ export default function Home() {
                       src="/logo-github.svg"
                       className="mr-4 inline w-6"
                       alt="GitHub Logo"
+                      width={200}
+                      height={200}
                     />
                     <a
                       href="https://github.com/romaingallez"
@@ -138,6 +184,8 @@ export default function Home() {
                       src="/logo-linkedin.svg"
                       className="mr-4 inline w-6"
                       alt="LinkedIn Logo"
+                      width={200}
+                      height={200}
                     />
                     <a
                       href="https://www.linkedin.com/in/romaingallez/"
