@@ -3,6 +3,7 @@ import { useState, useRef, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 import type { TurnstileInstance } from '@marsidev/react-turnstile';
 import CloudFlareCaptcha  from 'src/components/CloudFlareCaptcha';
+import MetaTags from 'src/components/MetaTags';
 
 export default function Contact() {
   // Form field states
@@ -20,10 +21,10 @@ export default function Contact() {
   const [captchaSuccess, setCaptchaSuccess] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>(null);
 
-  // Field change handlers
-  const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => setName(event.target.value);
-  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
-  const handleMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => setMessage(event.target.value);
+  // // Field change handlers
+  // const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => setName(event.target.value);
+  // const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
+  // const handleMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => setMessage(event.target.value);
 
   // Form submission handler
   const handleSubmit = (event: FormEvent) => {
@@ -81,9 +82,13 @@ export default function Contact() {
 
   return (
     <>
+      <MetaTags 
+        title="Contacter Romain" 
+        description="This is a description of my page" 
+        image="https://cv.romaingallez.fr/resume.png" 
+        url="https://cv.romaingallez.fr" 
+      />
       <Head>
-        <title>Contacter Romain</title>
-        <meta name="description" content="CV Romain GALLEZ" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main

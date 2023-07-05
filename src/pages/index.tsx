@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import "@fontsource/questrial";
 import { useSearchParams } from 'next/navigation'
+import MetaTags from 'src/components/MetaTags';
+
 
 
 export default function Home() {
@@ -50,9 +52,14 @@ export default function Home() {
 
   return (
     <>
+
+      <MetaTags 
+        title="CV romaingallez" 
+        description="This is a description of my page" 
+        image="https://cv.romaingallez.fr/resume.png" 
+        url="https://cv.romaingallez.fr" 
+      />
       <Head>
-        <title>CV romaingallez</title>
-        <meta name="description" content="CV Romain GALLEZ" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="font-questrial container mx-auto max-w-screen-xl">
