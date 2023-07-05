@@ -207,11 +207,17 @@ export default function Home() {
                 <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
                   Profil
                 </h2>
-                <p className="mb-2">
-                  Actuellement en troisième année d'alternance en tant
-                  qu'administrateur systèmes et réseaux au sein de la fonction
-                  publique territoriale.
-                </p>
+                <p className="mb-2">Actuellement en troisième année d'alternance en tant qu'administrateur systèmes et réseaux au sein de la fonction publique territoriale, j'ai acquis une expertise solide dans divers domaines.</p>
+                
+                <h3 className="text-2l font-semibold mt-4 mb-2">Administration de systèmes :</h3>
+                <p className="mb-2">J'ai une maîtrise approfondie de plusieurs outils et systèmes, notamment Linux, Docker, Proxmox, XCP-ng et Windows Active Directory.</p>
+                
+                <h3 className="text-2l font-semibold mt-4 mb-2">Cloud :</h3>
+                <p className="mb-2">J'ai travaillé avec diverses solutions de cloud, y compris OVHCLOUD, AWS, Clever Cloud et Railway.app.</p>
+                
+                <h3 className="text-2l font-semibold mt-4 mb-2">Programmation :</h3>
+                <p className="mb-2">Ma pratique de Python et Golang m'a permis de développer une compréhension solide des langages de programmation, complétant ainsi mon profil d'administrateur systèmes et réseaux.</p>
+
               </div>
               <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
 
@@ -367,7 +373,8 @@ export default function Home() {
                   Formation
                 </h2>
                 <div className="mb-12 px-2 text-lg font-light">
-                  <h3 className="m-2 border-l-8 border-black pl-2 text-sm font-bold uppercase tracking-widest">
+                  <br />
+                  <h3 className="border-l-8 border-black pl-2 text-sm font-bold uppercase tracking-widest">
                     ADMINISTRATEUR DES SYSTÈMES D'INFORMATION
                   </h3>
                   <p>
@@ -382,12 +389,28 @@ export default function Home() {
                     Septembre 2020 à Juillet 2022
                     <span className="text-gray-700"> Mewo informatique</span>
                   </p>
+                  <br />
+                  <h3 className="border-l-8 border-black pl-2 text-sm/[17px] font-bold uppercase tracking-widest">
+                    MIM - Mathematique Mecanique Informatique 
+                  </h3>
+                  <p>
+                    Septembre 2017 à Juillet 2020
+                    <span className="text-gray-700"> Université de Lorraine</span>
+                  </p>
+                  <br />
+                  <h3 className="border-l-8 border-black pl-2 text-sm/[17px] font-bold uppercase tracking-widest">
+                    Bac STi2D ITEC
+                  </h3>
+                  <p>
+                    Septembre 2014 à Juillet 2017
+                    <span className="text-gray-700"> Lycée Henri Nominé</span>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </main>
-        {/* <p>{age}</p> */}
+      
       </div>
 
       <footer className="font-questrial mx-12 mt-12 flex flex-col justify-center text-center md:flex-row">
