@@ -31,11 +31,6 @@ export default function Home() {
   let showPhone;
   let phoneSpaced;
 
-
-
-
-
-  
   
   if (phone) {
 
@@ -92,31 +87,33 @@ export default function Home() {
                   
 
                   {showEmail ? (
-                    <div className="my-3 flex items-center">
+                  <div className="my-3 flex items-center">
                     <Image
                       src="/mail-outline.svg"
                       className="mr-4 inline w-6"
-                      alt="Mail icon"
+                      alt="Email icon"
                       width={200}
                       height={200}
                     />
+                    {email ? (
                       <a href={`mailto:${email}`}>{email}</a>
-                    </div>
-                  ) : (
-                    <div className="my-3 flex items-center">
+                    ) : (
+                      <span>Email not available</span>
+                    )}
+                  </div>
+                ) : (
+                  <div className="my-3 flex items-center">
                     <Image
                       src="/mail-outline.svg"
                       className="mr-4 inline w-6"
-                      alt="Mail icon"
+                      alt="Email icon"
                       width={200}
                       height={200}
                     />
-                    <Link href="/contact">Formulaire de contact</Link>
+                    <Link href="/contact">Contact</Link>
                   </div>
-                  )}
+                )}
 
-
-                  
 
 
                   {showPhone && (
@@ -128,9 +125,14 @@ export default function Home() {
                         width={200}
                         height={200}
                       />
-                     <a href={`tel:${phone}`}>{phoneSpaced}</a>
+                      {phone ? (
+                        <a href={`tel:${phone}`}>{phoneSpaced}</a>
+                      ) : (
+                        <span>Phone number not available</span>
+                      )}
                     </div>
                   )}
+
 
 
                   <div className="my-3 flex items-center">
