@@ -82,7 +82,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Create T3 App</title>
+        <title>Contacter Romain</title>
         <meta name="description" content="CV Romain GALLEZ" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

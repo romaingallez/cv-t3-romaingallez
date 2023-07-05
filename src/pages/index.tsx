@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Create T3 App</title>
+        <title>CV romaingallez</title>
         <meta name="description" content="CV Romain GALLEZ" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
