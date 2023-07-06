@@ -4,6 +4,7 @@ import axios from 'axios';
 import type { TurnstileInstance } from '@marsidev/react-turnstile';
 import CloudFlareCaptcha  from 'src/components/CloudFlareCaptcha';
 import MetaTags from 'src/components/MetaTags';
+import CustomFooter from 'src/components/CustomFooter';
 
 export default function Contact() {
   // Form field states
@@ -184,38 +185,7 @@ export default function Contact() {
         </div>
       </main>
 
-      <footer className="font-questrial mx-12 mt-12 flex flex-col justify-center text-center md:flex-row">
-        <a
-          href="https://create.t3.gg/"
-          className="m-2 flex-shrink-0 rounded border-2 border-gray-400 px-4 py-2 text-sm text-gray-600"
-        >
-          Made with t3
-        </a>
-        <a
-          href="https://clever-cloud.com"
-          className="m-2 flex-shrink-0 rounded border-2 border-gray-400 px-4 py-2 text-sm text-gray-600"
-        >
-          Hosted on clever-cloud.com
-        </a>
-        <a
-          href="https://chrisko.io/"
-          className="m-2 flex-shrink-0 rounded border-2 border-gray-400 px-4 py-2 text-sm text-gray-600"
-        >
-          Based on an html template by Chrisko
-        </a>
-        <a
-          href="https://tailwindcss.com/"
-          className="m-2 flex-shrink-0 rounded border-2 border-gray-400 px-4 py-2 text-sm text-gray-600"
-        >
-          TailwindCSS
-        </a>
-        <a
-          href="https://ionicons.com/"
-          className="m-2 flex-shrink-0 rounded border-2 border-gray-400 px-4 py-2 text-sm text-gray-600"
-        >
-          Ionicons
-        </a>
-      </footer>
+    <CustomFooter />
     </>
   );
 }
