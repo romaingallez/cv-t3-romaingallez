@@ -1,4 +1,5 @@
-import { Turnstile, TurnstileProps } from '@marsidev/react-turnstile';
+import { Turnstile } from '@marsidev/react-turnstile';
+import  type { TurnstileProps } from '@marsidev/react-turnstile';
 import { TurnstileInstance } from '@marsidev/react-turnstile';
 import { forwardRef } from "react";
 
