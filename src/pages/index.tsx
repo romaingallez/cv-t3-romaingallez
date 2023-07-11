@@ -221,13 +221,13 @@ export default function Home() {
                     <span>Français (langue maternelle)</span>
                   </div>
                   <div className="my-3 flex items-center">
-                    {/* <Image
+                    <Image
                       src="/gb.svg"
                       className="mr-4 inline w-6"
                       alt="UK Flag"
                       width={200}
                       height={200}
-                    /> */}
+                    />
                     <span>Anglais (niveau C1)</span>
                   </div>
                 </div>
