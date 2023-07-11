@@ -212,21 +212,21 @@ export default function Home() {
                   <h2 className="mb-4 text-xl font-semibold">Langues</h2>
                   <div className="my-3 flex items-center">
                     <Image
-                      src="/fr.svg"
-                      className="mr-4 inline w-6"
+                      src="/flag_fr.svg"
+                      className="mr-4 inline"
                       alt="French Flag"
-                      width={200}
-                      height={200}
+                      width={25}
+                      height={15}
                     />
                     <span>Français (langue maternelle)</span>
                   </div>
                   <div className="my-3 flex items-center">
                     <Image
-                      src="/gb.svg"
-                      className="mr-4 inline w-6"
+                      src="/flag_uk.svg"
+                      className="mr-4 inline"
                       alt="UK Flag"
-                      width={200}
-                      height={200}
+                      width={25}
+                      height={15}
                     />
                     <span>Anglais (niveau C1)</span>
                   </div>
