@@ -207,6 +207,30 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
+                {/* Add a zone with my language skill (french natif speeaker) english Linguaskill 180+ C1 */}
+                <div className="mb-12 px-2 text-lg font-light">
+                  <h2 className="mb-4 text-xl font-semibold">Langues</h2>
+                  <div className="my-3 flex items-center">
+                    <Image
+                      src="/fr.svg"
+                      className="mr-4 inline w-6"
+                      alt="French Flag"
+                      width={200}
+                      height={200}
+                    />
+                    <span>Français (langue maternelle)</span>
+                  </div>
+                  <div className="my-3 flex items-center">
+                    {/* <Image
+                      src="/gb.svg"
+                      className="mr-4 inline w-6"
+                      alt="UK Flag"
+                      width={200}
+                      height={200}
+                    /> */}
+                    <span>Anglais (niveau C1)</span>
+                  </div>
+                </div>
               </div>
             </div>
 
