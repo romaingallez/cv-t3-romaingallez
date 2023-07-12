@@ -6,21 +6,13 @@ import { useSearchParams } from 'next/navigation'
 import MetaTags from 'src/components/MetaTags';
 import CustomFooter from 'src/components/CustomFooter';
 
-
-
-
 export default function Home() {
-  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
-// calculate the age from the birthdate
   const birthdate = "1999-05-04";
   const age = Math.floor(
     (new Date().getTime() - new Date(birthdate).getTime()) / 3.15576e10
   );
   
-  // const age = "24";
-  // const phone = "1234567890"; // Replace with your phone number
   const searchParams = useSearchParams()
-
 
   let showEmail = false;
   const email = searchParams.get('email')
@@ -35,26 +27,18 @@ export default function Home() {
   let showPhone;
   let phoneSpaced;
 
-  
   if (phone) {
-
     showPhone = true;
-    
     phoneSpaced = phone.replace(
       /(.{2})(.{2})(.{2})(.{2})(.{2})/,
       "$1 $2 $3 $4 $5"
     );
-    // console.log(phoneSpaced);
   } else {
     showPhone = false;
-    // console.log("Phone parameter not found");
   }
-
-  //read the from the query named "phone"
 
   return (
     <>
-
       <MetaTags 
         title="CV romaingallez" 
         description="Mon CV en ligne" 
@@ -89,41 +73,39 @@ export default function Home() {
                   Développeur Junior DevOps <br /> Administrateur système Linux
                 </h3>
               </div>
+
               <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
               <div>
                 <div className="mb-12 px-2 text-lg font-light">
                   <h2 className="mb-4 text-xl font-semibold">Contact</h2>
-                  
 
                   {showEmail ? (
-                  <div className="my-3 flex items-center">
-                    <Image
-                      src="/mail-outline.svg"
-                      className="mr-4 inline w-6"
-                      alt="Email icon"
-                      width={200}
-                      height={200}
-                    />
-                    {email ? (
-                      <a href={`mailto:${email}`}>{email}</a>
-                    ) : (
-                      <span>Email not available</span>
-                    )}
-                  </div>
-                ) : (
-                  <div className="my-3 flex items-center">
-                    <Image
-                      src="/mail-outline.svg"
-                      className="mr-4 inline w-6"
-                      alt="Email icon"
-                      width={200}
-                      height={200}
-                    />
-                    <Link href="/contact">Contact</Link>
-                  </div>
-                )}
-
-
+                    <div className="my-3 flex items-center">
+                      <Image
+                        src="/mail-outline.svg"
+                        className="mr-4 inline w-6"
+                        alt="Email icon"
+                        width={200}
+                        height={200}
+                      />
+                      {email ? (
+                        <a href={`mailto:${email}`}>{email}</a>
+                      ) : (
+                        <span>Email not available</span>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="my-3 flex items-center">
+                      <Image
+                        src="/mail-outline.svg"
+                        className="mr-4 inline w-6"
+                        alt="Email icon"
+                        width={200}
+                        height={200}
+                      />
+                      <Link href="/contact">Contact</Link>
+                    </div>
+                  )}
 
                   {showPhone && (
                     <div className="my-3 flex items-center">
@@ -141,8 +123,6 @@ export default function Home() {
                       )}
                     </div>
                   )}
-
-
 
                   <div className="my-3 flex items-center">
                     <Image
@@ -207,7 +187,34 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                {/* Add a zone with my language skill (french natif speeaker) english Linguaskill 180+ C1 */}
+              
+                <div className="mb-12 px-2 text-lg font-light">
+                  <h2 className="mb-4 text-xl font-semibold">Compétences</h2>
+                  <div className="my-3">
+                    <h3 className="mb-2">En développement :</h3>
+                    <ul className="list-disc pl-6">
+                      <li><span className="rounded-xl bg-gray-300 px-3">Golang</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">Python</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">Javascript/Typescript</span></li>
+                    </ul>
+                  </div>
+                  <div className="my-3">
+                    <h3 className="mb-2">En administration système :</h3>
+                    <ul className="list-disc pl-6">
+                      <li><span className="rounded-xl bg-gray-300 px-3">Linux</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">Docker</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">Proxmox</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">ESXi</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">AWS</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">Clever Cloud</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">Railway.app</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">OVHcloud</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">Hetzner</span></li>
+                      <li><span className="rounded-xl bg-gray-300 px-3">CI/CD</span></li>
+                    </ul>
+                  </div>
+                </div>
+
                 <div className="mb-12 px-2 text-lg font-light">
                   <h2 className="mb-4 text-xl font-semibold">Langues</h2>
                   <div className="my-3 flex items-center">
@@ -231,27 +238,31 @@ export default function Home() {
                     <span>Anglais (niveau C1)</span>
                   </div>
                 </div>
+
               </div>
             </div>
+                    
 
             {/* Main content area */}
             <div className="w-full bg-white p-8 sm:w-3/4">
-              <div id="profile" className="prose">
-                <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
-                  Profil
+              <div id="profil" className="prose">
+                <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-2xl">
+                  Alternance
                 </h2>
-                <p className="mb-2">Actuellement en troisième année d'alternance en tant qu'administrateur systèmes et réseaux au sein de la fonction publique territoriale, j'ai acquis une expertise solide dans divers domaines.</p>
-                
-                <h3 className="text-2l font-semibold mt-4 mb-2">Administration de systèmes :</h3>
-                <p className="mb-2">J'ai une maîtrise approfondie de plusieurs outils et systèmes, notamment Linux, Docker, Proxmox, XCP-ng et Windows Active Directory.</p>
-                
-                <h3 className="text-2l font-semibold mt-4 mb-2">Cloud :</h3>
-                <p className="mb-2">J'ai travaillé avec diverses solutions de cloud, y compris OVHCLOUD, AWS, Clever Cloud et Railway.app.</p>
-                
-                <h3 className="text-2l font-semibold mt-4 mb-2">Programmation :</h3>
-                <p className="mb-2">Ma pratique de Python et Golang m'a permis de développer une compréhension solide des langages de programmation, complétant ainsi mon profil d'administrateur systèmes et réseaux.</p>
-
+                <h3 className="mb-3 mt-4 sm:text-xl pl-2 font-bold uppercase tracking-widest">
+                  Expert en développement informatique de niveau (bac +5)
+                </h3>
+                <div className="m-5">
+                <Image
+                  src="/6a5fccc2-4cc8-4e20-a53b-a60874d88f27.png"
+                  alt="Mewo campus"
+                  className="mx-auto mb-2 w-48"
+                  width={200}
+                  height={200}
+                />
               </div>
+              </div>
+
               <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
 
               <div id="EXPERIANCES">
