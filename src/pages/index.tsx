@@ -265,7 +265,7 @@ export default function Home() {
                     </h3>
                     <section className="mb-6">
                       <div className="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                        Depuis Août.&nbsp;2020:
+                        Depuis Septembre.&nbsp;2022:
                       </div>
                       <div className="w-full lg:inline-block lg:w-8/12">
                         Administrateur système et réseau
@@ -358,7 +358,7 @@ export default function Home() {
                     </h3>
                     <section className="mb-6">
                       <div className="mb-2 italic">
-                        Septembre 2019 à janvier 2020: Technicien informatique
+                        Septembre 2019 à Août 2022: Technicien informatique
                       </div>
                     </section>
                     <section className="mb-6">
@@ -419,7 +419,7 @@ export default function Home() {
                     TECHNICIEN D’INFRASTRUCTURE INFORMATIQUE ET SÉCURITÉ
                   </h3>
                   <p>
-                    Septembre 2020 à Juillet 2022
+                    Septembre 2020 à Août 2022
                     <span className="text-gray-700"> Mewo informatique</span>
                   </p>
                   <br />
@@ -427,7 +427,7 @@ export default function Home() {
                     MIM - Mathematique Mecanique Informatique 
                   </h3>
                   <p>
-                    Septembre 2017 à Juillet 2020
+                    Septembre 2017 à Août 2020
                     <span className="text-gray-700"> Université de Lorraine</span>
                   </p>
                   <br />
@@ -435,7 +435,7 @@ export default function Home() {
                     Bac STi2D ITEC
                   </h3>
                   <p>
-                    Septembre 2014 à Juillet 2017
+                    Septembre 2014 à Août 2017
                     <span className="text-gray-700"> Lycée Henri Nominé</span>
                   </p>
                 </div>
