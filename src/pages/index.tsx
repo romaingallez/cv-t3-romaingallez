@@ -240,7 +240,13 @@ export default function Home() {
                 <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
                   Profil
                 </h2>
-                <p className="mb-2">Actuellement en troisième année d'alternance en tant qu'administrateur systèmes et réseaux au sein de la fonction publique territoriale, j'ai acquis une expertise solide dans divers domaines.</p>
+                <p className="mb-2">
+                  Actuellement à la recherche d'un contrat d'apprentissage pour poursuivre ma formation en tant qu'Expert en développement informatique de niveau bac +5, j'ai déjà acquis une solide expertise au cours de mes trois années d'expérience en alternance en tant qu'administrateur systèmes et réseaux au sein de la fonction publique territoriale. J'ai d'ailleurs obtenu le titre d'Administrateur Systèmes et Réseaux au terme de cette période.
+                </p>
+                
+                <p className="mb-2">
+                  Ma formation se déroule sous le format 4 jours en entreprise et 1 jour à Mewo, ce qui me permet d'acquérir à la fois une expérience pratique en milieu professionnel et de bénéficier des enseignements théoriques dispensés par Mewo.
+                </p>
                 
                 <h3 className="text-2l font-semibold mt-4 mb-2">Administration de systèmes :</h3>
                 <p className="mb-2">J'ai une maîtrise approfondie de plusieurs outils et systèmes, notamment Linux, Docker, Proxmox, XCP-ng et Windows Active Directory.</p>
@@ -250,7 +256,6 @@ export default function Home() {
                 
                 <h3 className="text-2l font-semibold mt-4 mb-2">Programmation :</h3>
                 <p className="mb-2">Ma pratique de Python et Golang m'a permis de développer une compréhension solide des langages de programmation, complétant ainsi mon profil d'administrateur systèmes et réseaux.</p>
-
               </div>
               <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
 
