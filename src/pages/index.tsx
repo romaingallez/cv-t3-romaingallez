@@ -2,28 +2,24 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import "@fontsource/questrial";
-import { useSearchParams } from 'next/navigation'
-import MetaTags from 'src/components/MetaTags';
-import CustomFooter from 'src/components/CustomFooter';
-
-
-
+import { useSearchParams } from "next/navigation";
+import MetaTags from "src/components/MetaTags";
+import CustomFooter from "src/components/CustomFooter";
 
 export default function Home() {
   // const hello = api.example.hello.useQuery({ text: "from tRPC" });
-// calculate the age from the birthdate
+  // calculate the age from the birthdate
   const birthdate = "1999-05-04";
   const age = Math.floor(
     (new Date().getTime() - new Date(birthdate).getTime()) / 3.15576e10
   );
-  
+
   // const age = "24";
   // const phone = "1234567890"; // Replace with your phone number
-  const searchParams = useSearchParams()
-
+  const searchParams = useSearchParams();
 
   let showEmail = false;
-  const email = searchParams.get('email')
+  const email = searchParams.get("email");
 
   if (email) {
     showEmail = true;
@@ -31,15 +27,13 @@ export default function Home() {
     showEmail = false;
   }
 
-  const phone = searchParams.get('phone')
+  const phone = searchParams.get("phone");
   let showPhone;
   let phoneSpaced;
 
-  
   if (phone) {
-
     showPhone = true;
-    
+
     phoneSpaced = phone.replace(
       /(.{2})(.{2})(.{2})(.{2})(.{2})/,
       "$1 $2 $3 $4 $5"
@@ -54,26 +48,25 @@ export default function Home() {
 
   return (
     <>
-
-      <MetaTags 
-        title="CV romaingallez" 
-        description="Mon CV en ligne" 
-        image="https://cv.romaingallez.fr/resume.png" 
-        url="https://cv.romaingallez.fr" 
+      <MetaTags
+        title="CV romaingallez"
+        description="Mon CV en ligne"
+        image="https://cv.romaingallez.fr/resume.png"
+        url="https://cv.romaingallez.fr"
       />
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="font-questrial container mx-auto max-w-screen-xl">
+      <div className="font-questrial container mx-auto max-w-screen-xl w-full px-4 sm:px-0">
         <main
           id="wrapper"
-          className="flex-row flex-wrap shadow-2xl sm:m-12 sm:flex-nowrap"
+          className="flex-row flex-wrap shadow-2xl sm:m-12 flex-col-reverse sm:flex-row"
         >
-          <div className="flex w-full">
+          <div className="md:flex w-full">
             {/* Sidebar */}
             <div
               id="sidebar"
-              className="w-full bg-gradient-to-b from-indigo-300 via-green-300 to-white p-8 sm:max-w-sm"
+              className="w-full bg-gradient-to-b from-indigo-300 via-green-300 to-white p-8 sm:max-w-sm sm:w-1/4"
             >
               {/* Profile photo */}
               <div className="mt-8 flex flex-col items-center">
@@ -93,37 +86,34 @@ export default function Home() {
               <div>
                 <div className="mb-12 px-2 text-lg font-light">
                   <h2 className="mb-4 text-xl font-semibold">Contact</h2>
-                  
 
                   {showEmail ? (
-                  <div className="my-3 flex items-center">
-                    <Image
-                      src="/mail-outline.svg"
-                      className="mr-4 inline w-6"
-                      alt="Email icon"
-                      width={200}
-                      height={200}
-                    />
-                    {email ? (
-                      <a href={`mailto:${email}`}>{email}</a>
-                    ) : (
-                      <span>Email not available</span>
-                    )}
-                  </div>
-                ) : (
-                  <div className="my-3 flex items-center">
-                    <Image
-                      src="/mail-outline.svg"
-                      className="mr-4 inline w-6"
-                      alt="Email icon"
-                      width={200}
-                      height={200}
-                    />
-                    <Link href="/contact">Contact</Link>
-                  </div>
-                )}
-
-
+                    <div className="my-3 flex items-center">
+                      <Image
+                        src="/mail-outline.svg"
+                        className="mr-4 inline w-6"
+                        alt="Email icon"
+                        width={200}
+                        height={200}
+                      />
+                      {email ? (
+                        <a href={`mailto:${email}`}>{email}</a>
+                      ) : (
+                        <span>Email not available</span>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="my-3 flex items-center">
+                      <Image
+                        src="/mail-outline.svg"
+                        className="mr-4 inline w-6"
+                        alt="Email icon"
+                        width={200}
+                        height={200}
+                      />
+                      <Link href="/contact">Contact</Link>
+                    </div>
+                  )}
 
                   {showPhone && (
                     <div className="my-3 flex items-center">
@@ -141,8 +131,6 @@ export default function Home() {
                       )}
                     </div>
                   )}
-
-
 
                   <div className="my-3 flex items-center">
                     <Image
@@ -237,20 +225,35 @@ export default function Home() {
             {/* Main content area */}
             <div className="w-full bg-white p-8 sm:w-3/4">
               <div id="profile" className="prose">
-                <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
-                  Profil
+                <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl mb-2">
+                  Profile
                 </h2>
-                <p className="mb-2">Actuellement en troisième année d'alternance en tant qu'administrateur systèmes et réseaux au sein de la fonction publique territoriale, j'ai acquis une expertise solide dans divers domaines.</p>
-                
-                <h3 className="text-2l font-semibold mt-4 mb-2">Administration de systèmes :</h3>
-                <p className="mb-2">J'ai une maîtrise approfondie de plusieurs outils et systèmes, notamment Linux, Docker, Proxmox, XCP-ng et Windows Active Directory.</p>
-                
-                <h3 className="text-2l font-semibold mt-4 mb-2">Cloud :</h3>
-                <p className="mb-2">J'ai travaillé avec diverses solutions de cloud, y compris OVHCLOUD, AWS, Clever Cloud et Railway.app.</p>
-                
-                <h3 className="text-2l font-semibold mt-4 mb-2">Programmation :</h3>
-                <p className="mb-2">Ma pratique de Python et Golang m'a permis de développer une compréhension solide des langages de programmation, complétant ainsi mon profil d'administrateur systèmes et réseaux.</p>
+                <p className="mb-2">
+                Actuellement en première année de Master en alternance dans un cursus axé sur le développement informatique, après avoir obtenu un Bac +3 en administration de systèmes et réseaux, je poursuis mon ambition de diversifier mes compétences.{'\n'}  
+                </p>
+                <p className="mb-2">Mon objectif est d'explorer la galaxie DevOps, un domaine qui allie l'administration systèmes et réseaux à la programmation et au développement continu.</p>
+                <p className="mb-2">Mon parcours antérieur en tant qu'administrateur systèmes et réseaux au sein de la fonction publique territoriale durant ma troisième année d'alternance m'a permis d'acquérir une solide expertise dans plusieurs domaines.</p>
+                <h3 className="text-2l mb-2 mt-4 font-semibold">
+                  Administration de systèmes :
+                </h3>
+                <p className="mb-2">
+                Mon expérience m'a conféré une maîtrise approfondie de divers outils et systèmes tels que Linux, Docker, Proxmox, XCP-ng et Windows Active Directory, renforçant ainsi ma base technique.
+                </p>
 
+                <h3 className="text-2l mb-2 mt-4 font-semibold">Cloud :</h3>
+                <p className="mb-2">
+                J'ai eu l'opportunité de travailler avec différentes solutions cloud telles que OVHCLOUD, AWS, Clever Cloud et Railway.app, enrichissant ma compréhension des environnements cloud et des architectures distribuées.
+                </p>
+
+                <h3 className="text-2l mb-2 mt-4 font-semibold">
+                  Programmation :
+                </h3>
+                <p className="mb-2">
+                La pratique de Python et Golang, intégrée à mon parcours académique et professionnel, m'a permis de développer une solide compréhension des langages de programmation.
+                </p>
+                <p className="mb-2">
+                Cette compétence complète idéalement mon profil d'administrateur systèmes et réseaux, me positionnant de manière favorable pour embrasser les challenges liés aux métiers DevOps.
+                </p>
               </div>
               <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
 
@@ -402,17 +405,25 @@ export default function Home() {
               <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
 
               <div id="formation">
-                <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
-                  Formation
-                </h2>
-                <div className="mb-12 px-2 text-lg font-light">
+                  <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
+                    Formation
+                  </h2>
+                  <div className="mb-12 px-2 text-lg font-light">
+                    <br />
+                  <h3 className="border-l-8 border-black pl-2 text-sm font-bold uppercase tracking-widest">
+                    EXPERT EN SYSTÈMES D'INFORMATION - DÉVELOPPEUR(SE) INFORMATIQUE
+                  </h3>
+                  <p>
+                    Depuis Septembre 2023
+                    <span className="text-gray-700"> Mewo informatique</span>
+                  </p>
                   <br />
                   <h3 className="border-l-8 border-black pl-2 text-sm font-bold uppercase tracking-widest">
                     ADMINISTRATEUR DES SYSTÈMES D'INFORMATION
                   </h3>
                   <p>
-                    Depuis Septembre 2022{" "}
-                    <span className="text-gray-700">Mewo informatique</span>
+                    Septembre 2022 à Juillet 2023
+                    <span className="text-gray-700"> Mewo informatique</span>
                   </p>
                   <br />
                   <h3 className="border-l-8 border-black pl-2 text-sm/[17px] font-bold uppercase tracking-widest">
@@ -424,10 +435,10 @@ export default function Home() {
                   </p>
                   <br />
                   <h3 className="border-l-8 border-black pl-2 text-sm/[17px] font-bold uppercase tracking-widest">
-                    MIM - Mathematique Mecanique Informatique 
+                    MIM - Mathematique Mecanique Informatique
                   </h3>
                   <p>
-                    Septembre 2017 à Août 2020
+                    Septembre 2017 à Juillet 2020
                     <span className="text-gray-700"> Université de Lorraine</span>
                   </p>
                   <br />
@@ -444,6 +455,7 @@ export default function Home() {
           </div>
         </main>
         <CustomFooter />
+
       </div>
     </>
   );
