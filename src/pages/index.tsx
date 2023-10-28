@@ -411,7 +411,7 @@ export default function Home() {
                   <div className="mb-12 px-2 text-lg font-light">
                     <br />
                   <h3 className="border-l-8 border-black pl-2 text-sm font-bold uppercase tracking-widest">
-                    EXPERT EN SYSTÈMES D'INFORMATION - DÉVELOPPEUR(SE) INFORMATIQUE
+                    EXPERT EN SYSTÈMES D'INFORMATION - DÉVELOPPEUR INFORMATIQUE
                   </h3>
                   <p>
                     Depuis Septembre 2023
