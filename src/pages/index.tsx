@@ -79,7 +79,7 @@ export default function Home() {
                 />
                 <h2 className="mt-4 text-xl font-medium">Romain GALLEZ</h2>
                 <h3>
-                  Développeur Junior DevOps <br /> Administrateur système Linux
+                  Développeur Junior | DevOps
                 </h3>
               </div>
               <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
@@ -206,7 +206,7 @@ export default function Home() {
                       width={25}
                       height={15}
                     />
-                    <span>Français (langue maternelle)</span>
+                    <span>Français <br />(langue maternelle)</span>
                   </div>
                   <div className="my-3 flex items-center">
                     <Image
