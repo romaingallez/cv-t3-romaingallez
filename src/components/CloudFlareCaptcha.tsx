@@ -1,6 +1,6 @@
 import { Turnstile } from '@marsidev/react-turnstile';
 import  type { TurnstileProps } from '@marsidev/react-turnstile';
-import { TurnstileInstance } from '@marsidev/react-turnstile';
+import type { TurnstileInstance } from '@marsidev/react-turnstile';
 import { forwardRef } from "react";
 
 type CloudFlareCaptchaProps = Omit<TurnstileProps, 'siteKey'>;

@@ -3,7 +3,17 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { ReactEmailTemplate } from "src/components/ReactEmailTemplate";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY ?? '');
+
+interface EmailRequestBody {
+  to: string;
+  from: string;
+  name: string;
+  subject: string;
+  body: string;
+  captchaToken: string;
+}
+
 
 // Function to send a notification via Pushover
 const sendPushoverNotification = async (message: string) => {
@@ -19,7 +29,9 @@ const sendPushoverNotification = async (message: string) => {
 
   try {
     const response = await fetch('https://api.pushover.net/1/messages.json', options);
-    const data = await response.json();
+
+    // const data = await response.json();
+    const data = await response.json() as object & {success: boolean};
     console.log('Pushover response:', data);
   } catch (err) {
     console.error('Error sending Pushover notification:', err);
@@ -32,7 +44,8 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const { to, from, name, subject, body, captchaToken } = req.body;
+  const { to, from, name, subject, body, captchaToken } = req.body as EmailRequestBody;
+
 
   // Validate the required parameters
   if (!to || !from || !subject || !body || !captchaToken) {
@@ -72,8 +85,9 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
       react: ReactEmailTemplate({ name: name, from: from, subject: subject, body: body }),
     });
 
-    // Sending notification to Pushover
-    await sendPushoverNotification(`New message from ${name}: ${body}`);
+    const pushoverMessage = `New message from ${name || 'Unknown'}: ${body || 'No content'}`;
+    await sendPushoverNotification(pushoverMessage);
+  
     
     res.status(200).json(emailResponse);
   } catch (error) {
