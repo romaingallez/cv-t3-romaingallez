@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import "@fontsource/questrial";
 import { useState, useRef } from 'react';
 import axios from 'axios';
@@ -23,9 +22,8 @@ export default function Contact() {
   const [token, setToken] = useState<string | null>(null);
 
   // Form submission handler
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!captcha || !captchaSuccess) {
+  const handleSubmit = async () => {
+    if (!captcha.current || !captchaSuccess) {
       setError('Please complete the captcha challenge.');
       return;
     }
@@ -78,7 +76,13 @@ export default function Contact() {
                 Salut ! Je suis ravi de savoir que vous souhaitez me contacter.
                 N'hésitez pas à remplir le formulaire ci-dessous.
               </p>
-              <form onSubmit={handleSubmit} className="mt-6">
+              <form onSubmit={(event) => {
+                event.preventDefault();
+                handleSubmit().catch((error) => {
+                  console.error('Error during form submission:', error);
+                  // handle error here, e.g., set error state
+                });
+              }} className="mt-6">
                 {/* Name Field */}
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-lg font-medium">
