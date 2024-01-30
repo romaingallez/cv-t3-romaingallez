@@ -18,6 +18,16 @@ export default function Home() {
   // const phone = "1234567890"; // Replace with your phone number
   const searchParams = useSearchParams();
 
+  let showMewo = false;
+  const mewo = searchParams.get("mewo");
+
+  if (mewo) {
+    console.log("mewo");
+    showMewo = true;
+  } else {
+    showMewo = false;
+  }
+
   let showEmail = false;
   const email = searchParams.get("email");
 
@@ -57,16 +67,16 @@ export default function Home() {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="font-questrial container mx-auto max-w-screen-xl w-full px-4 sm:px-0">
+      <div className="font-questrial container mx-auto w-full max-w-screen-xl px-4 sm:px-0">
         <main
           id="wrapper"
-          className="flex-row flex-wrap shadow-2xl sm:m-12 flex-col-reverse sm:flex-row"
+          className="flex-row flex-col-reverse flex-wrap shadow-2xl sm:m-12 sm:flex-row"
         >
-          <div className="md:flex w-full">
+          <div className="w-full md:flex">
             {/* Sidebar */}
             <div
               id="sidebar"
-              className="w-full bg-gradient-to-b from-indigo-300 via-green-300 to-white p-8 sm:max-w-sm sm:w-1/4"
+              className="w-full bg-gradient-to-b from-indigo-300 via-green-300 to-white p-8 sm:w-1/4 sm:max-w-sm"
             >
               {/* Profile photo */}
               <div className="mt-8 flex flex-col items-center">
@@ -78,11 +88,22 @@ export default function Home() {
                   height={200}
                 />
                 <h2 className="mt-4 text-xl font-medium">Romain GALLEZ</h2>
-                <h3>
-                  Développeur Junior | DevOps
-                </h3>
+                <h3>Développeur Junior | DevOps</h3>
               </div>
-              <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
+
+              {showMewo && (
+                <div className="mt-8 flex flex-col items-center">
+                  <Image
+                    src="/MewoLogo.png"
+                    alt="LogoMewo"
+                    className="mx-auto mb-2 w-48"
+                    width={200}
+                    height={200}
+                  ></Image>
+                </div>
+              )}
+              {/*  */}
+              <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
               <div>
                 <div className="mb-12 px-2 text-lg font-light">
                   <h2 className="mb-4 text-xl font-semibold">Contact</h2>
@@ -206,7 +227,10 @@ export default function Home() {
                       width={25}
                       height={15}
                     />
-                    <span>Français <br />(langue maternelle)</span>
+                    <span>
+                      Français <br />
+                      (langue maternelle)
+                    </span>
                   </div>
                   <div className="my-3 flex items-center">
                     <Image
@@ -225,37 +249,59 @@ export default function Home() {
             {/* Main content area */}
             <div className="w-full bg-white p-8 sm:w-3/4">
               <div id="profile" className="prose">
-                <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl mb-2">
+                <h2 className="mb-2 border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
                   Profile
                 </h2>
                 <p className="mb-2">
-                Actuellement en première année de Master en alternance dans un cursus axé sur le développement informatique, après avoir obtenu un Bac +3 en administration de systèmes et réseaux, je poursuis mon ambition de diversifier mes compétences.{'\n'}  
+                  Actuellement en première année de Master en alternance dans un
+                  cursus axé sur le développement informatique, après avoir
+                  obtenu un Bac +3 en administration de systèmes et réseaux, je
+                  poursuis mon ambition de diversifier mes compétences.{"\n"}
                 </p>
-                <p className="mb-2">Mon objectif est d'explorer la galaxie DevOps, un domaine qui allie l'administration systèmes et réseaux à la programmation et au développement continu.</p>
-                <p className="mb-2">Mon parcours antérieur en tant qu'administrateur systèmes et réseaux au sein de la fonction publique territoriale durant ma troisième année d'alternance m'a permis d'acquérir une solide expertise dans plusieurs domaines.</p>
+                <p className="mb-2">
+                  Mon objectif est d'explorer la galaxie DevOps, un domaine qui
+                  allie l'administration systèmes et réseaux à la programmation
+                  et au développement continu.
+                </p>
+                <p className="mb-2">
+                  Mon parcours antérieur en tant qu'administrateur systèmes et
+                  réseaux au sein de la fonction publique territoriale durant ma
+                  troisième année d'alternance m'a permis d'acquérir une solide
+                  expertise dans plusieurs domaines.
+                </p>
                 <h3 className="text-2l mb-2 mt-4 font-semibold">
                   Administration de systèmes :
                 </h3>
                 <p className="mb-2">
-                Mon expérience m'a conféré une maîtrise approfondie de divers outils et systèmes tels que Linux, Docker, Proxmox, XCP-ng et Windows Active Directory, renforçant ainsi ma base technique.
+                  Mon expérience m'a conféré une maîtrise approfondie de divers
+                  outils et systèmes tels que Linux, Docker, Proxmox, XCP-ng et
+                  Windows Active Directory, renforçant ainsi ma base technique.
                 </p>
 
                 <h3 className="text-2l mb-2 mt-4 font-semibold">Cloud :</h3>
                 <p className="mb-2">
-                J'ai eu l'opportunité de travailler avec différentes solutions cloud telles que OVHCLOUD, AWS, Clever Cloud et Railway.app, enrichissant ma compréhension des environnements cloud et des architectures distribuées.
+                  J'ai eu l'opportunité de travailler avec différentes solutions
+                  cloud telles que OVHCLOUD, AWS, Clever Cloud et Railway.app,
+                  enrichissant ma compréhension des environnements cloud et des
+                  architectures distribuées.
                 </p>
 
                 <h3 className="text-2l mb-2 mt-4 font-semibold">
                   Programmation :
                 </h3>
                 <p className="mb-2">
-                La pratique de Python et Golang, intégrée à mon parcours académique et professionnel, m'a permis de développer une solide compréhension des langages de programmation.
+                  La pratique de Python et Golang, intégrée à mon parcours
+                  académique et professionnel, m'a permis de développer une
+                  solide compréhension des langages de programmation.
                 </p>
                 <p className="mb-2">
-                Cette compétence complète idéalement mon profil d'administrateur systèmes et réseaux, me positionnant de manière favorable pour embrasser les challenges liés aux métiers DevOps.
+                  Cette compétence complète idéalement mon profil
+                  d'administrateur systèmes et réseaux, me positionnant de
+                  manière favorable pour embrasser les challenges liés aux
+                  métiers DevOps.
                 </p>
               </div>
-              <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
+              <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
 
               <div id="EXPERIANCES">
                 <h2 className="mb-4 border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
@@ -402,14 +448,14 @@ export default function Home() {
                 </div>
               </div>
 
-              <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10" />
+              <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
 
               <div id="formation">
-                  <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
-                    Formation
-                  </h2>
-                  <div className="mb-12 px-2 text-lg font-light">
-                    <br />
+                <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
+                  Formation
+                </h2>
+                <div className="mb-12 px-2 text-lg font-light">
+                  <br />
                   <h3 className="border-l-8 border-black pl-2 text-sm font-bold uppercase tracking-widest">
                     EXPERT EN SYSTÈMES D'INFORMATION - DÉVELOPPEUR INFORMATIQUE
                   </h3>
@@ -439,7 +485,10 @@ export default function Home() {
                   </h3>
                   <p>
                     Septembre 2017 à Juillet 2020
-                    <span className="text-gray-700"> Université de Lorraine</span>
+                    <span className="text-gray-700">
+                      {" "}
+                      Université de Lorraine
+                    </span>
                   </p>
                   <br />
                   <h3 className="border-l-8 border-black pl-2 text-sm/[17px] font-bold uppercase tracking-widest">
@@ -455,7 +504,6 @@ export default function Home() {
           </div>
         </main>
         <CustomFooter />
-
       </div>
     </>
   );
