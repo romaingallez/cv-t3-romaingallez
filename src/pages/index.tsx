@@ -19,7 +19,7 @@ export default function Home() {
   const searchParams = useSearchParams();
 
   let showThisSite = false;
-  const thisSite = searchParams.get("thisSite");
+  const thisSite = searchParams.get("directlink");
 
   if (thisSite) {
     showThisSite = true;
