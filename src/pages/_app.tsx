@@ -18,7 +18,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
   }, []);
 
-  // return <Component {...pageProps} />;
   return (
     <>
     <Component {...pageProps} />
