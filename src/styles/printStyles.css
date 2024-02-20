@@ -1,0 +1,38 @@
+/* printStyles.css */
+
+@media print {
+    body, html {
+      width: 210mm;
+      height: 297mm;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  
+    #wrapper {
+      box-shadow: none;
+    }
+  
+    .container {
+      max-width: 100%;
+      padding: 0;
+      page-break-after: always;
+    }
+  
+    main {
+      flex-wrap: nowrap;
+      page-break-after: always;
+    }
+  
+    #sidebar {
+      display: none; /* Hide the sidebar when printing */
+    }
+  
+    .w-full.md\\:flex {
+      flex-direction: column;
+    }
+  
+    /* Add any additional styles you want to apply specifically for print */
+    /* For example, you might want to adjust font sizes, hide elements, etc. */
+  }
+  

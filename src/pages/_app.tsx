@@ -7,16 +7,20 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 
+// import "src/styles/printStyles.css";
+
 
 
 const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL || "https://matomo.romaingallez.fr";
-const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID || "6";
+const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID || "1";
 
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   useEffect(() => {
     init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
   }, []);
+
+  
 
   return (
     <>
