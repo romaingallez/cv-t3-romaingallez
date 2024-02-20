@@ -1,33 +1,30 @@
 import React from 'react';
-import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
 
 const ResumeProjets: React.FC = () => {
     return (
-        <div id="PROJETS">
+        <div id="PROJETS" className="space-y-8">
         <h2 className="mb-4 border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
           Projets
         </h2>
+
+        {/* Project 1 */}
         <div>
-          <h3 className="sm:text border-l-8 border-black pl-2 font-bold uppercase tracking-widest">
+          <h3 className="text-lg border-l-8 border-black pl-2 font-bold uppercase tracking-widest">
             Scraping de calendrier
           </h3>
           <section className="mb-6">
-            <div className="mb-2 italic">2023</div>
+            <p className="italic">2023</p>
           </section>
           <section className="mb-6">
-            <div className="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-              Description:
-            </div>
-            <div className="w-full lg:inline-block lg:w-8/12">
-              <p>
-                Mise en place d'un site pour acceder au planning des
-                cours de ma formation en utilisant les fichier ics
-                fournis par le logiciel de gestion de planning de
-                l'école.
-              </p>
-              {/* Links to project and code repository */}
+            <p className="mb-2 italic">Description:</p>
+            <p>
+              Mise en place d'un site pour accéder au planning des
+              cours de ma formation en utilisant les fichiers ics
+              fournis par le logiciel de gestion de planning de
+              l'école.
+            </p>
+            <p className="mt-2">
               <Link
                 href="https://scform.romaingallez.fr"
                 target="_blank"
@@ -45,103 +42,73 @@ const ResumeProjets: React.FC = () => {
               >
                 Code source
               </Link>
-            </div>
+            </p>
           </section>
           <section className="mb-6">
-            <div className="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-              Technologie utilisée:
-            </div>
-            <div className="w-full lg:inline-block lg:w-8/12">
-              <span className="rounded-xl bg-gray-300 px-3">
-                Golang
-              </span>
-              <span className="rounded-xl bg-gray-300 px-3">
-                Railway.app
-              </span>
-              <span className="rounded-xl bg-gray-300 px-3">
-                MongoDB
-              </span>
-            </div>
-          </section>
-        </div>
-        <div>
-          <h3 className="sm:text border-l-8 border-black pl-2 font-bold uppercase tracking-widest">
-            Virtualisation avec XCP-ng
-          </h3>
-          <section className="mb-6">
-            <div className="mb-2 italic">2023</div>
-          </section>
-          <section className="mb-6">
-            <div className="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-              Description:
-            </div>
-            <div className="w-full lg:inline-block lg:w-8/12">
-              <p>
-                Poc pour un remplacement de l'infrastructure de
-                virtualisation de mon employeur de VMware ESXi à XCP-ng
-              </p>
-              <div>
-                <section className="pt-5">
-                  - Mise en place d'un cluster XCP-ng sur un
-                  environnements de test
-                </section>
-                <section className="">
-                  - Ecriture de procédure de migration des VMs avec un
-                  minimum d'impact
-                </section>
-                <section className="">
-                  - Mise en place d'un solutions de sauvegarde et de
-                  restauration
-                </section>
-                <section className="">
-                  - Mise en place d'un monitoring de l'infrastructure
-                </section>
-                <br></br>
-                Malheureusement, le projet n'a pas pu etre mené à son
-                terme, mais il m'a permis de découvrir une nouvelle
-                technologie et de renforcer mes compétences en
-                virtualisation.
-              </div>
-            </div>
-          </section>
-          <section className="mb-6">
-            <div className="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-              Technologie utilisée:
-            </div>
-            <div className="w-full lg:inline-block lg:w-8/12">
-              <span className="rounded-xl bg-gray-300 px-3">
-                VMware ESXi
-              </span>
-              <span className="rounded-xl bg-gray-300 px-3">
-                XCP-ng
-              </span>
+            <p className="mb-2 italic">Technologie utilisée:</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="rounded-xl bg-gray-300 px-3 py-1">Golang</span>
+              <span className="rounded-xl bg-gray-300 px-3 py-1">Railway.app</span>
+              <span className="rounded-xl bg-gray-300 px-3 py-1">MongoDB</span>
             </div>
           </section>
         </div>
 
+        {/* Project 2 */}
         <div>
-          <h3 className="sm:text border-l-8 border-black pl-2 font-bold uppercase tracking-widest">
+          <h3 className="text-lg border-l-8 border-black pl-2 font-bold uppercase tracking-widest">
+            Virtualisation avec XCP-ng
+          </h3>
+          <section className="mb-6">
+            <p className="italic">2023</p>
+          </section>
+          <section className="mb-6">
+            <p className="mb-2 italic">Description:</p>
+            <p>
+              Poc pour un remplacement de l'infrastructure de
+              virtualisation de mon employeur de VMware ESXi à XCP-ng.
+            </p>
+            <ul className="list-disc pl-5">
+              <li>Mise en place d'un cluster XCP-ng sur un environnement de test.</li>
+              <li>Écriture de procédure de migration des VMs avec un minimum d'impact.</li>
+              <li>Mise en place d'une solution de sauvegarde et de restauration.</li>
+              <li>Mise en place d'un monitoring de l'infrastructure.</li>
+            </ul>
+            <p className="mt-2">
+              Malheureusement, le projet n'a pas pu être mené à son terme, mais il m'a permis de découvrir une nouvelle technologie et de renforcer mes compétences en virtualisation.
+            </p>
+          </section>
+          <section className="mb-6">
+            <p className="mb-2 italic">Technologie utilisée:</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="rounded-xl bg-gray-300 px-3 py-1">VMware ESXi</span>
+              <span className="rounded-xl bg-gray-300 px-3 py-1">XCP-ng</span>
+            </div>
+          </section>
+        </div>
+
+        {/* Project 3 */}
+        <div>
+          <h3 className="text-lg border-l-8 border-black pl-2 font-bold uppercase tracking-widest">
             Proxmox SPICE CLI
           </h3>
           <section className="mb-6">
-            <div className="mb-2 italic">2023</div>
+            <p className="italic">2023</p>
           </section>
           <section className="mb-6">
-            <div className="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-              Description:
-            </div>
-            <div className="w-full lg:inline-block lg:w-8/12">
-              <p>
-                Developpement d'une interface en ligne de commande pour
-                la gestion de machine virtuelle sur serveur Proxmox
-              </p>
+            <p className="mb-2 italic">Description:</p>
+            <p>
+              Développement d'une interface en ligne de commande pour
+              la gestion de machine virtuelle sur serveur Proxmox.
+            </p>
+            <p className="mt-2">
               <Link
                 href="https://github.com/romaingallez/proxmox-spice-cli/releases"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-600"
               >
-                Lien vers la derniere release
+                Lien vers la dernière release
               </Link>
               {" | "}
               <Link
@@ -152,27 +119,15 @@ const ResumeProjets: React.FC = () => {
               >
                 Code source
               </Link>
-              <div></div>
-            </div>
+            </p>
           </section>
           <section className="mb-6">
-            <div className="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-              Technologie utilisée:
-            </div>
-            <div className="w-full lg:inline-block lg:w-8/12">
-              <span className="rounded-xl bg-gray-300 px-3">
-                Golang
-              </span>
-              <span className="rounded-xl bg-gray-300 px-3">
-                Spice
-              </span>
-              <span className="rounded-xl bg-gray-300 px-3">
-                Proxmox
-              </span>
-              <span className="rounded-xl bg-gray-300 px-3">
-                Cobra / Viper
-              </span>
-
+            <p className="mb-2 italic">Technologie utilisée:</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="rounded-xl bg-gray-300 px-3 py-1">Golang</span>
+              <span className="rounded-xl bg-gray-300 px-3 py-1">Spice</span>
+              <span className="rounded-xl bg-gray-300 px-3 py-1">Proxmox</span>
+              <span className="rounded-xl bg-gray-300 px-3 py-1">Cobra / Viper</span>
             </div>
           </section>
         </div>
