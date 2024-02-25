@@ -54,6 +54,7 @@ export default function Home() {
 
   let showEmail = false;
   const email = searchParams.get("email");
+  
 
   if (email) {
     showEmail = true;
@@ -103,16 +104,15 @@ export default function Home() {
           <div className="w-full md:flex">
             {/* Sidebar */}
             <ResumeSidebar
-              showMewo={showMewo}
-              showEmail={showEmail}
-              email={email}
+              showMewo={showMewo ?? undefined}
+              showEmail={showEmail ?? undefined}
+              email={email ?? undefined}
               showPhone={showPhone}
-              phone={phone}
-              phoneSpaced={phoneSpaced}
-              age={age}
-              showThisSite={showThisSite}
+              phone={phone ?? undefined}
+              phoneSpaced={phoneSpaced ?? undefined}
+              age={age ?? undefined}
+              showThisSite={showThisSite ?? undefined}
             />
-
             {/* Main content area */}
             <div className="w-full bg-white p-8 sm:w-3/4">
               {showMewo ? <ResumeIntroAlternances /> : <ResumeIntroPlusTrois />}
