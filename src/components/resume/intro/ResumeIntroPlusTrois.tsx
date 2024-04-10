@@ -7,21 +7,14 @@ const ResumeIntroPlusTrois: React.FC = () => {
         Profile
       </h2>
       <p className="mb-2">
-        Actuellement en première année de Master en alternance dans un cursus
-        axé sur le développement informatique, après avoir obtenu un Bac +3 en
-        administration de systèmes et réseaux, je poursuis mon ambition de
-        diversifier mes compétences.
+      À la recherche d'un emploi à la suite de l'obtention de ma licence en informatique.
         {"\n"}
       </p>
       <p className="mb-2">
-        Je souhaite explorer la galaxie DevOps, car cela permet d'ailler mes
-        compétences en développement et administration système. 
+      Je souhaite explorer la galaxie DevOps, car cela permet de lier mes compétences en développement et en administration système. 
       </p>
       <p className="mb-2">
-        Mon parcours antérieur en tant qu'administrateur systèmes et réseaux au
-        sein de la fonction publique territoriale durant ma troisième année
-        d'alternance m'a permis d'acquérir une solide expertise dans plusieurs
-        domaines.
+      Mon parcours antérieur en tant qu'administrateur systèmes et réseaux au sein de la fonction publique territoriale durant mes trois années d'alternances m'a permis d'acquérir une solide expertise dans plusieurs domaines.
       </p>
       <h3 className="text-2l mb-2 mt-4 font-semibold">
         Administration de systèmes :

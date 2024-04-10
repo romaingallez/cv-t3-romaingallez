@@ -14,10 +14,10 @@ const CustomFooter = () => (
       Made with t3
     </a>
     <a
-      href="https://railway.app/"
+      href="https://vercel.com//"
       className="m-2 flex-shrink-0 rounded border-2 border-gray-400 px-4 py-2 text-sm text-gray-600"
     >
-      Hosted on railway.app
+      Hosted on vercel
     </a>
     <a
       href="https://chrisko.io/"
