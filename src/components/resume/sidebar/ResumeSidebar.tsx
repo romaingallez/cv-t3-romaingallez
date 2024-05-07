@@ -143,9 +143,9 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
               height={200}
             />
             <Link
-              href="https://l.gallez.tech/s/github"
+              href="https://github.com/romaingallez"
               target="_blank"
-              rel="noopener"
+              // rel="noopener"
             >
               GitHub
             </Link>
@@ -159,9 +159,9 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
               height={200}
             />
             <Link
-              href="https://l.gallez.tech/s/linkedin"
+              href="https://www.linkedin.com/in/romaingallez/"
               target="_blank"
-              rel="noopener"
+              // rel="noopener"
             >
               LinkedIn
             </Link>
