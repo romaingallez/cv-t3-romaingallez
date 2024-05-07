@@ -5,12 +5,14 @@ import "@fontsource/questrial";
 import { useSearchParams } from "next/navigation";
 import MetaTags from "src/components/MetaTags";
 import CustomFooter from "src/components/CustomFooter";
-import ResumeIntroAlternances from "src/components/resume/intro/ResumeIntroAlternances";
-import ResumeIntroPlusTrois from "src/components/resume/intro/ResumeIntroPlusTrois";
+// import ResumeIntroAlternances from "src/components/resume/intro/ResumeIntroAlternances";
+// import ResumeIntroPlusTrois from "src/components/resume/intro/ResumeIntroPlusTrois";
 import ResumeProjets from "src/components/resume/projets/ResumeProjets";
 import ResumeSidebar from "src/components/resume/sidebar/ResumeSidebar";
 import ReusomeExperiancesV2 from "src/components/resume/experiances/ResumeExperiancesV2";
-import SmallIntro from "src/components/resume/intro/SmallIntro";
+import SmallIntroAlternances from "src/components/resume/intro/SmallIntroAlternances";
+import SmallIntroPlusTrois from "src/components/resume/intro/SmallIntroPlusTrois";
+
 
 export default function Home() {
   // const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -117,7 +119,7 @@ export default function Home() {
             {/* Main content area */}
             <div className="w-full bg-white p-8 sm:w-3/4">
               {/* {showMewo ? <ResumeIntroAlternances /> : <ResumeIntroPlusTrois />} */}
-              <SmallIntro />
+              {showMewo ? <SmallIntroAlternances /> : <SmallIntroPlusTrois />}
               <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
               <ResumeProjets />
 
