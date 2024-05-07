@@ -72,9 +72,9 @@ const ResumeProjets: React.FC = () => {
             <td className="border-b border-gray-300 py-2 pl-2">2023</td>
             
             <td className="border-b border-gray-300 py-2 pl-2">
-              <div class="group relative">
-                <a class="">PoC</a>
-                <span class="absolute top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+              <div className="group relative">
+                <a className="">PoC</a>
+                <span className="absolute top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   ✨ Proof of Concept - Preuve de concept
                 </span>{" "}
                 <a>pour un remplacement de l'infrastructure de virtualisation de mon
