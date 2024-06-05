@@ -39,7 +39,7 @@ const ResumeExperiancesV2: React.FC = () => {
   ];
 
   return (
-    <div id="EXPERIENCES" className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div id="EXPERIENCES" className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <h2 className="mb-2 border-l-4 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl col-span-full">
         Expériences Professionnelles
       </h2>

@@ -13,7 +13,6 @@ import ReusomeExperiancesV2 from "src/components/resume/experiances/ResumeExperi
 import SmallIntroAlternances from "src/components/resume/intro/SmallIntroAlternances";
 import SmallIntroPlusTrois from "src/components/resume/intro/SmallIntroPlusTrois";
 
-
 export default function Home() {
   // const hello = api.example.hello.useQuery({ text: "from tRPC" });
   // calculate the age from the birthdate
@@ -57,7 +56,6 @@ export default function Home() {
 
   let showEmail = false;
   const email = searchParams.get("email");
-  
 
   if (email) {
     showEmail = true;
@@ -102,7 +100,7 @@ export default function Home() {
 
         <main
           id="wrapper"
-          className="flex-row flex-col-reverse flex-wrap shadow-2xl sm:m-6 sm:flex-row"
+          className="flex-row flex-wrap shadow-2xl sm:m-6 sm:flex-row"
         >
           <div className="w-full md:flex">
             {/* Sidebar */}
@@ -120,12 +118,11 @@ export default function Home() {
             <div className="w-full bg-white p-8 sm:w-3/4">
               {/* {showMewo ? <ResumeIntroAlternances /> : <ResumeIntroPlusTrois />} */}
               {showMewo ? <SmallIntroAlternances /> : <SmallIntroPlusTrois />}
-              <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
-              <ResumeProjets />
-
-              <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
+              <hr className="mx-auto my-2 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
               <ReusomeExperiancesV2 />
-              <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
+              <hr className="mx-auto my-2 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
+              <ResumeProjets />
+              <hr className="mx-auto my-2 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
               <div id="formation">
                 <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
                   Formation
@@ -160,7 +157,18 @@ export default function Home() {
                     MIM - Mathematique Mecanique Informatique
                   </h3>
                   <p>
-                    Septembre 2017 à Juillet 2020
+                    Septembre 2019 à Juillet 2020
+                    <span className="text-gray-700">
+                      {" "}
+                      Université de Lorraine
+                    </span>
+                  </p>
+                  <br />
+                  <h3 className="border-l-8 border-black pl-2 text-sm/[17px] font-bold uppercase tracking-widest">
+                    L1 - Histoire
+                  </h3>
+                  <p>
+                    Septembre 2017 à Juillet 2019
                     <span className="text-gray-700">
                       {" "}
                       Université de Lorraine
