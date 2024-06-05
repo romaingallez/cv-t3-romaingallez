@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,6 +14,7 @@ interface ResumeSidebarProps {
   age: number;
   showThisSite: boolean;
 }
+
 const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
   showMewo,
   showEmail,
@@ -24,6 +25,19 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
   age,
   showThisSite,
 }) => {
+  const router = useRouter();
+  const currentPage = router.asPath;
+  const url = new URL(`https://cv.romaingallez.fr${currentPage}`);
+  const params = new URLSearchParams(url.search);
+
+  // Remove the 'directlink' parameter if it exists
+  if (params.has('directlink')) {
+    params.delete('directlink');
+  }
+
+  // Construct the new URL without the 'directlink' parameter
+  const cleanedUrl = `${url.pathname}?${params.toString()}`;
+
   return (
     <div
       id="sidebar"
@@ -177,7 +191,7 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
                 height={200}
               />
               <Link
-                href="https://cv.romaingallez.fr"
+                href={cleanedUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -219,7 +233,7 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
             <Image
               src="/logo_go.svg"
               className="mr-4 inline"
-              alt="French Flag"
+              alt="Go Logo"
               width={25}
               height={15}
             />
@@ -231,7 +245,7 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
             <Image
               src="/logo_python.svg"
               className="mr-4 inline"
-              alt="UK Flag"
+              alt="Python Logo"
               width={25}
               height={15}
             />
