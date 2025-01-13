@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+import { useQRCode } from "next-qrcode";
 
 // Define the types for the props
 interface ResumeSidebarProps {
@@ -31,12 +32,14 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
   const params = new URLSearchParams(url.search);
 
   // Remove the 'directlink' parameter if it exists
-  if (params.has('directlink')) {
-    params.delete('directlink');
+  if (params.has("directlink")) {
+    params.delete("directlink");
   }
 
   // Construct the new URL without the 'directlink' parameter
   const cleanedUrl = `${url.pathname}?${params.toString()}`;
+
+  const { Canvas: QRCodeCanvas } = useQRCode(); 
 
   return (
     <div
@@ -156,13 +159,27 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
               width={200}
               height={200}
             />
-            <Link
+            {/* <Link
               href="https://github.com/romaingallez"
               target="_blank"
               // rel="noopener"
             >
               GitHub
-            </Link>
+            </Link> */}
+            <QRCodeCanvas
+              text={"https://github.com/romaingallez"}
+              options={
+                {
+                  margin: 2,
+                  width: 75,
+                  color: {
+                    dark: "#000000",
+                    light: "00000000",
+                  },
+                }
+              }
+
+            />
           </div>
           <div className="my-3 flex items-center">
             <Image
@@ -172,13 +189,27 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
               width={200}
               height={200}
             />
-            <Link
+            {/* <Link
               href="https://www.linkedin.com/in/romaingallez/"
               target="_blank"
               // rel="noopener"
             >
               LinkedIn
-            </Link>
+            </Link> */}
+            <QRCodeCanvas
+              text={"https://www.linkedin.com/in/romaingallez/"}
+              options={
+                {
+                  margin: 2,
+                  width: 75,
+                  color: {
+                    dark: "#000000",
+                    light: "#00000000",
+                  },
+                }
+              }
+
+            />
           </div>
 
           {showThisSite && (
@@ -190,11 +221,7 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
                 width={200}
                 height={200}
               />
-              <Link
-                href={cleanedUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href={cleanedUrl} target="_blank" rel="noopener noreferrer">
                 Version web
               </Link>
             </div>
