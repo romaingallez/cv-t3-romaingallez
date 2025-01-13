@@ -92,7 +92,7 @@ const ResumeProjets: React.FC = () => {
       <td className="border border-gray-300 py-2 pl-2">2023</td>
       <td className="border border-gray-300 py-2 pl-2">
         Développement d'une interface en ligne de commande pour la gestion
-        de machine virtuelle sur serveur Proxmox.
+        de machines virtuelle sur serveur Proxmox.
       </td>
       <td className="border border-gray-300 py-2 pl-2">
         Golang, Spice, Proxmox, Cobra / Viper

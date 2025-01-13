@@ -4,26 +4,26 @@ const ResumeExperiancesV2: React.FC = () => {
   const experiences = [
     {
       company: "Centre de Gestion de la Fonction Publique Territoriale de la Moselle",
-      duration: "Depuis Septembre 2023",
-      position: "Développeur fullstack",
+      duration: "Depuis septembre 2023",
+      position: "Développeur Fullstack",
       tasks: [
         "Conception et développement d'applications web internes.",
-        "Participation au développement d'une application pour la gestion de la mission RGPD du CDG57.",
-        "Participation au développement d'une application pour mission promotion interne du CDG57.",
+        "Participation au développement d'une application pour la gestion de la mission RGPD du CDG 57.",
+        "Participation au développement d'une application pour mission promotion interne du CDG 57.",
         "Création de scripts pour automatiser des tâches récurrentes.",
       ],
-      tools: ["Symfony", "MariaDB", "Nginx", "Ubuntu Serveur", "Github"],
+      tools: ["Python","Golang","Symfony", "MariaDB", "Nginx", "Ubuntu Serveur", "Github"],
     },
     {
       company: "Centre de Gestion de la Fonction Publique Territoriale de la Moselle",
-      duration: "De Septembre 2019 à Août 2023",
+      duration: "De septembre 2019 à Août 2023",
       position: "Administrateur système et réseau",
       tasks: [
         "Gestion et maintenance proactive du parc informatique.",
         "Pilotage du déploiement et de la maintenance des infrastructures serveur.",
         "Contribution à la stratégie de cybersécurité.",
       ],
-      tools: ["WAPT", "Veeam", "GLPI", "WSUS", "VMware ESXi", "Docker", "Windows Server"],
+      tools: ["WAPT", "Veeam", "GLPI", "WSUS", "VMware ESXi", "Linux","Docker", "Windows Server", "Powershell"],
     },
     // {
     //   company: "Centre de Gestion de la Fonction Publique Territoriale de la Moselle",
