@@ -105,7 +105,7 @@ export default function Home() {
   return (
     <>
       <MetaTags
-        title="CV romaingallez"
+        title="RGF"
         description="Mon CV en ligne"
         image="https://cv.romaingallez.fr/resume.png"
         url="https://cv.romaingallez.fr"
@@ -178,7 +178,7 @@ export default function Home() {
                   </p>
                   <br />
                   <h3 className="border-l-8 border-black pl-2 text-sm/[17px] font-bold uppercase tracking-widest">
-                    MIM - Mathematique Mecanique Informatique
+                    MIM - Mathematiques Mecanique Informatique
                   </h3>
                   <p>
                     Septembre 2019 à Juillet 2020
