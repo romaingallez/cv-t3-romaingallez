@@ -1,3 +1,4 @@
+'use client'
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,8 +9,10 @@ import CustomFooter from "src/components/CustomFooter";
 // import ResumeIntroAlternances from "src/components/resume/intro/ResumeIntroAlternances";
 // import ResumeIntroPlusTrois from "src/components/resume/intro/ResumeIntroPlusTrois";
 import ResumeProjets from "src/components/resume/projets/ResumeProjets";
+import ResumeProjetsPapier from "src/components/resume/projets/ResumeProjetsPapier";
 import ResumeSidebar from "src/components/resume/sidebar/ResumeSidebar";
-import ReusomeExperiancesV2 from "src/components/resume/experiances/ResumeExperiancesV2";
+import ResumeSidebarPapier from "src/components/resume/sidebar/ResumeSidebarPapier";
+import ResumeExperiancesV2 from "src/components/resume/experiances/ResumeExperiancesV2";
 import SmallIntroAlternances from "src/components/resume/intro/SmallIntroAlternances";
 import SmallIntroPlusTrois from "src/components/resume/intro/SmallIntroPlusTrois";
 
@@ -25,15 +28,31 @@ export default function Home() {
   // const phone = "1234567890"; // Replace with your phone number
   const searchParams = useSearchParams();
 
+
   let printStyles;
   const print = searchParams.get("print");
 
   if (print) {
     printStyles = "font-questrial print:font-questrial print:print-styles";
   } else {
-    printStyles =
-      "font-questrial container mx-auto w-full max-w-screen-xl px-4 sm:px-0";
+    printStyles = "font-questrial container mx-auto w-full max-w-screen-xl px-4 sm:px-0";
   }
+
+  console.log(printStyles);
+
+
+  let showPapier = false;
+  const papier = searchParams.get("papier");
+
+  // test if papier contains true or false
+  if (papier === "true") {
+    showPapier = true;
+  } else {
+    showPapier = false;
+  }
+
+  
+
 
   let showThisSite = false;
   const thisSite = searchParams.get("directlink");
@@ -53,6 +72,7 @@ export default function Home() {
   } else {
     showMewo = false;
   }
+
 
   let showEmail = false;
   const email = searchParams.get("email");
@@ -80,12 +100,14 @@ export default function Home() {
     // console.log("Phone parameter not found");
   }
 
+
+
   //read the from the query named "phone"
 
   return (
     <>
       <MetaTags
-        title="CV romaingallez"
+        title="RGF"
         description="Mon CV en ligne"
         image="https://cv.romaingallez.fr/resume.png"
         url="https://cv.romaingallez.fr"
@@ -100,28 +122,43 @@ export default function Home() {
 
         <main
           id="wrapper"
-          className="flex-row flex-wrap shadow-2xl sm:m-6 sm:flex-row"
+          className="flex-row flex-wrap"
         >
           <div className="w-full md:flex">
             {/* Sidebar */}
-            <ResumeSidebar
-              showMewo={showMewo ?? undefined}
-              showEmail={showEmail ?? undefined}
-              email={email ?? undefined}
-              showPhone={showPhone}
-              phone={phone ?? undefined}
-              phoneSpaced={phoneSpaced ?? undefined}
-              age={age ?? undefined}
-              showThisSite={showThisSite ?? undefined}
-            />
+            {showPapier ? (
+              <ResumeSidebarPapier
+                showMewo={showMewo ?? undefined}
+                showEmail={showEmail ?? undefined}
+                email={email ?? undefined}
+                showPhone={showPhone}
+                phone={phone ?? undefined}
+                phoneSpaced={phoneSpaced ?? undefined}
+                age={age ?? undefined}
+                showThisSite={showThisSite ?? undefined}
+              />
+            ) : (
+              <ResumeSidebar
+                showMewo={showMewo ?? undefined}
+                showEmail={showEmail ?? undefined}
+                email={email ?? undefined}
+                showPhone={showPhone}
+                phone={phone ?? undefined}
+                phoneSpaced={phoneSpaced ?? undefined}
+                age={age ?? undefined}
+                showThisSite={showThisSite ?? undefined}
+              />
+            )}
+
+
             {/* Main content area */}
             <div className="w-full bg-white p-8 sm:w-3/4">
               {/* {showMewo ? <ResumeIntroAlternances /> : <ResumeIntroPlusTrois />} */}
               {showMewo ? <SmallIntroAlternances /> : <SmallIntroPlusTrois />}
               <hr className="mx-auto my-2 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
-              <ReusomeExperiancesV2 />
+              <ResumeExperiancesV2 />
               <hr className="mx-auto my-2 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
-              <ResumeProjets />
+              {showPapier ? <ResumeProjetsPapier /> : <ResumeProjets />}
               <hr className="mx-auto my-2 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
               <div id="formation">
                 <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
@@ -154,7 +191,7 @@ export default function Home() {
                   </p>
                   <br />
                   <h3 className="border-l-8 border-black pl-2 text-sm/[17px] font-bold uppercase tracking-widest">
-                    MIM - Mathematique Mecanique Informatique
+                    MIM - Mathematiques Mecanique Informatique
                   </h3>
                   <p>
                     Septembre 2019 à Juillet 2020
@@ -187,7 +224,7 @@ export default function Home() {
             </div>
           </div>
         </main>
-        <CustomFooter />
+        {/* <CustomFooter /> */}
       </div>
     </>
   );
