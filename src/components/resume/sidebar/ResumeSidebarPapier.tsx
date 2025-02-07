@@ -2,8 +2,10 @@ import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+import { useQRCode } from "next-qrcode";
 import Langues from "./Langues";
 import Languages from "./Languages";
+
 
 // Define the types for the props
 interface ResumeSidebarProps {
@@ -12,12 +14,12 @@ interface ResumeSidebarProps {
   email?: string; // Optional because there's a condition to check if it's available
   showPhone: boolean;
   phone?: string; // Optional because there's a condition to check if it's available
-  phoneSpaced?: string; // Formatted version of the phone number
+  phoneSpaced?: string; // This is presumably a formatted version of the phone number
   age: number;
   showThisSite: boolean;
 }
 
-const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
+const ResumeSidebarPapier: React.FC<ResumeSidebarProps> = ({
   showMewo,
   showEmail,
   email,
@@ -39,6 +41,8 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
 
   // Construct the new URL without the 'directlink' parameter
   const cleanedUrl = `${url.pathname}?${params.toString()}`;
+
+  const { Canvas: QRCodeCanvas } = useQRCode(); 
 
   return (
     <div
@@ -69,11 +73,12 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
           />
         </div>
       )}
-      {/* Divider */}
+      {/*  */}
       <hr className="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
       <div>
         <div className="mb-12 px-2 text-lg font-light">
           <h2 className="mb-4 text-xl font-semibold">Contact</h2>
+
           {showEmail ? (
             <div className="my-3 flex items-center">
               <Image
@@ -146,6 +151,7 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
             <span>{age} ans</span>
           </div>
         </div>
+
         <div className="mb-12 px-2 text-lg font-light">
           <h2 className="mb-4 text-xl font-semibold">Sur internet</h2>
           <div className="my-3 flex items-center">
@@ -156,9 +162,27 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
               width={200}
               height={200}
             />
-            <Link href="https://github.com/romaingallez" target="_blank">
+            {/* <Link
+              href="https://github.com/romaingallez"
+              target="_blank"
+              // rel="noopener"
+            >
               GitHub
-            </Link>
+            </Link> */}
+            <QRCodeCanvas
+              text={"https://github.com/romaingallez"}
+              options={
+                {
+                  margin: 2,
+                  width: 75,
+                  color: {
+                    dark: "#000000",
+                    light: "00000000",
+                  },
+                }
+              }
+
+            />
           </div>
           <div className="my-3 flex items-center">
             <Image
@@ -168,12 +192,27 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
               width={200}
               height={200}
             />
-            <Link
+            {/* <Link
               href="https://www.linkedin.com/in/romaingallez/"
               target="_blank"
+              // rel="noopener"
             >
               LinkedIn
-            </Link>
+            </Link> */}
+            <QRCodeCanvas
+              text={"https://www.linkedin.com/in/romaingallez/"}
+              options={
+                {
+                  margin: 2,
+                  width: 75,
+                  color: {
+                    dark: "#000000",
+                    light: "#00000000",
+                  },
+                }
+              }
+
+            />
           </div>
 
           {showThisSite && (
@@ -191,7 +230,6 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
             </div>
           )}
         </div>
-        {/* Use the extracted components here */}
         <Langues />
         <Languages />
       </div>
@@ -199,4 +237,4 @@ const ResumeSidebar: React.FC<ResumeSidebarProps> = ({
   );
 };
 
-export default ResumeSidebar;
+export default ResumeSidebarPapier;

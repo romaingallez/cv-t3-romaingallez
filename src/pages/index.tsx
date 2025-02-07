@@ -11,6 +11,7 @@ import CustomFooter from "src/components/CustomFooter";
 import ResumeProjets from "src/components/resume/projets/ResumeProjets";
 import ResumeProjetsPapier from "src/components/resume/projets/ResumeProjetsPapier";
 import ResumeSidebar from "src/components/resume/sidebar/ResumeSidebar";
+import ResumeSidebarPapier from "src/components/resume/sidebar/ResumeSidebarPapier";
 import ResumeExperiancesV2 from "src/components/resume/experiances/ResumeExperiancesV2";
 import SmallIntroAlternances from "src/components/resume/intro/SmallIntroAlternances";
 import SmallIntroPlusTrois from "src/components/resume/intro/SmallIntroPlusTrois";
@@ -40,16 +41,17 @@ export default function Home() {
   console.log(printStyles);
 
 
-  let showPapier
+  let showPapier = false;
   const papier = searchParams.get("papier");
 
-  if (papier) {
+  // test if papier contains true or false
+  if (papier === "true") {
     showPapier = true;
   } else {
     showPapier = false;
   }
 
-  console.log(showPapier);
+  
 
 
   let showThisSite = false;
@@ -124,17 +126,31 @@ export default function Home() {
         >
           <div className="w-full md:flex">
             {/* Sidebar */}
-            <ResumeSidebar
-              showMewo={showMewo ?? undefined}
-              showEmail={showEmail ?? undefined}
-              email={email ?? undefined}
-              showPhone={showPhone}
-              phone={phone ?? undefined}
-              phoneSpaced={phoneSpaced ?? undefined}
-              age={age ?? undefined}
-              showThisSite={showThisSite ?? undefined}
-              
-            />
+            {showPapier ? (
+              <ResumeSidebarPapier
+                showMewo={showMewo ?? undefined}
+                showEmail={showEmail ?? undefined}
+                email={email ?? undefined}
+                showPhone={showPhone}
+                phone={phone ?? undefined}
+                phoneSpaced={phoneSpaced ?? undefined}
+                age={age ?? undefined}
+                showThisSite={showThisSite ?? undefined}
+              />
+            ) : (
+              <ResumeSidebar
+                showMewo={showMewo ?? undefined}
+                showEmail={showEmail ?? undefined}
+                email={email ?? undefined}
+                showPhone={showPhone}
+                phone={phone ?? undefined}
+                phoneSpaced={phoneSpaced ?? undefined}
+                age={age ?? undefined}
+                showThisSite={showThisSite ?? undefined}
+              />
+            )}
+
+
             {/* Main content area */}
             <div className="w-full bg-white p-8 sm:w-3/4">
               {/* {showMewo ? <ResumeIntroAlternances /> : <ResumeIntroPlusTrois />} */}
@@ -142,10 +158,7 @@ export default function Home() {
               <hr className="mx-auto my-2 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
               <ResumeExperiancesV2 />
               <hr className="mx-auto my-2 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
-             {/* if showPapier is true, show ResumeProjets, else show ResumeProjetsPapier */}
-             
-             {/* {showPapier ? <ResumeProjets /> : <ResumeProjetsPapier />} */}
-              <ResumeProjetsPapier />
+              {showPapier ? <ResumeProjetsPapier /> : <ResumeProjets />}
               <hr className="mx-auto my-2 h-1 w-48 rounded border-0 bg-gray-100 md:my-10 dark:bg-gray-700" />
               <div id="formation">
                 <h2 className="border-l-8 border-green-500 pl-2 font-bold uppercase tracking-widest sm:text-xl">
